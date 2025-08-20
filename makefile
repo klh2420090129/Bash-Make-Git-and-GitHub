@@ -1,14 +1,11 @@
-# Makefile to generate README.md for guessinggame project
+# Makefile to create README.md with details
 
-SCRIPT=guessinggame.sh
-README=README.md
-TITLE=Guessing Game Project
+README.md:
+	echo "# Guessing Game Project" > README.md
+	echo "" >> README.md
+	echo "Make run on: $$(date)" >> README.md
+	echo "" >> README.md
+	echo "Lines of code in guessinggame.sh: $$(wc -l < guessinggame.sh)" >> README.md
 
-all: $(README)
-
-$(README): $(SCRIPT)
-	echo "# $(TITLE)" > $(README)
-	echo "" >> $(README)
-	echo "Date and Time: $$(date '+%Y-%m-%d %H:%M:%S')" >> $(README)
-	echo "" >> $(README)
-	echo "Number of lines in $(SCRIPT): $$(wc -l < $(SCRIPT))" >> $(README)
+.PHONY: all
+all: README.md
